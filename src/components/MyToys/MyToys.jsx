@@ -1,6 +1,7 @@
 import  { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import { Link } from 'react-router-dom';
+import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const MyToys = () => {
@@ -35,7 +36,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`,
+        fetch(`http://localhost:5000/dlttoys/${id}`,
         {
           method:'DELETE',
           headers: {
@@ -46,7 +47,11 @@ const MyToys = () => {
         }
         )
         .then(res=> res.json)
-        .then(data => console.log(data))
+        .then(data => {
+          console.log(data);
+          // Remove the deleted item from the state array
+          setMyToys(prevMyToys => prevMyToys.filter(toy => toy._id !== id));
+        })
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',
@@ -101,9 +106,9 @@ const MyToys = () => {
                 <td>{toy.quantity}</td>
                 <td>
                 <Link to={`/toy/${toy._id}`}> <button className="btn btn-secondary btn-xs">details</button></Link> 
-                   <Link  className="btn btn-warning btn-xs" to={`/updateCoffee/${toy._id}`}> <button>Edit</button> </Link>
+                   <Link   to={`/updatetoy/${toy._id}`}> <button className="btn btn-warning btn-xs m-1 hover:bg-orange-600 hover:text-white "> <FaRegEdit/>  Edit</button> </Link>
               
-                   <button className="btn btn-error btn-xs" onClick={()=>handleDelete(toy._id)}>Delete</button>
+                   <button className="btn btn-error btn-xs text-white hover:bg-red-700" onClick={()=>handleDelete(toy._id)}> <FaTrashAlt/> Delete</button>
                 </td>
               </tr>
             ))}

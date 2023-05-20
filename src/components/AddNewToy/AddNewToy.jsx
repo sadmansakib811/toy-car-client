@@ -2,7 +2,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 const AddNewToy = () => {
-  const handleAddCoffee = (event) => {
+  const handleAddToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
@@ -55,9 +55,12 @@ const AddNewToy = () => {
       });
   };
   return (
-    <div className="bg-[#F4F3F0] p-24">
-      <h2 className="text-3xl font-extrabold">Add a New Toy</h2>
-      <form onSubmit={handleAddCoffee}>
+    <div className="bg-[#fdcb6e] p-24 text-center">
+      
+
+      <div className="bg-white p-10">
+      <h2 className="text-3xl font-extrabold mb-5" style={{ transform: 'rotate(2deg)', padding: '0.2rem 1.2rem', borderRadius: '20% 5% 20% 5%/5% 20% 25% 20%', backgroundColor: '#fdcb6e', fontSize: '1.5rem', display: 'inline-block' }}>Add a New Toy</h2>
+      <form onSubmit={handleAddToy}>
         {/* form name and sellerName row */}
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -118,19 +121,7 @@ const AddNewToy = () => {
         </div>
         {/* form category and details row */}
         <div className="md:flex mb-8">
-          {/* <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text">Category</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="text"
-                name="category"
-                placeholder="Category"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div> */}
+        
           <div className="form-control md:w-1/2">
             <label className="label">
               <span className="label-text">Category</span>
@@ -206,8 +197,9 @@ const AddNewToy = () => {
             </label>
           </div>
         </div>
-        <input type="submit" value="Add Toy" className="btn btn-block" />
+        <input type="submit" value="Add Toy" className="btn btn-block btn-secondary" />
       </form>
+      </div>
     </div>
   );
 };
