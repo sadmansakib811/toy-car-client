@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import bg1 from '../../../assets/dcbg.jpg'
+import { Link } from 'react-router-dom';
 const Dc = () => {
     const [dcToys, setDcToys]=useState([]);
     useEffect(()=>{
@@ -25,8 +26,7 @@ const Dc = () => {
                    </div>
                     
                     <div className="card-actions justify-end">
-                       <button className="btn btn-primary">Details</button>
-                    </div>
+                    <Link to={`/toy/${dc._id}`}><button className="btn btn-primary bg-purple-700 ">Details</button></Link>                    </div>
                 </div>
               </div>
             </div> )

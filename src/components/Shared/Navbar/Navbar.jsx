@@ -1,7 +1,19 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import logo from './../../../assets/logo.png'
+import { AuthContext } from '../../../providers/AuthProviders';
+import { useContext } from 'react';
 const Navbar = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() =>{
+            
+        })
+        .catch( error => console.log(error))
+    }
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -22,10 +34,10 @@ const Navbar = () => {
           </ul>
         </li> */}
         <li><Link to='./alltoys'>All Toys</Link></li>
-        <li><Link to='./mytoys'>My Toys</Link></li>
+        {/* <li><Link to='./mytoys'>My Toys</Link></li> */}
         <li><Link to='./addnewtoys'>Add A Toy</Link></li>
         <li><Link to='./blogs'>Blogs</Link></li>
-
+       
       </ul>
     </div>
     <Link className="btn btn-ghost normal-case text-xl justify-center items-center align-middle"><img className='w-8 justify-center items-center align-middle' src={logo} alt="" /> </Link>
@@ -45,13 +57,18 @@ const Navbar = () => {
         </ul>
       </li> */}
       <li><Link to='./alltoys'>All Toys</Link></li>
-        <li><Link to='./mytoys'>My Toys</Link></li>
+        
         <li><Link to='./addnewtoys'>Add A Toy</Link></li>
         <li><Link to='./blogs'>Blogs</Link></li>
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Get started</a>
+  { user?.email ?  <>
+              <li><Link to='./mytoys'>My Toys</Link></li>
+            <li><button onClick={handleLogOut}>Log out</button></li>
+        </> 
+        : <li> <Link to="/login">Login</Link> </li>
+       }
   </div>
 </div>
     );

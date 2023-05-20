@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import bg1 from '../../../assets/marvelbg.jpg'
+import { Link } from 'react-router-dom';
 const Marvel = () => {
     const [marvelToys, setMarvelToys]=useState([]);
     useEffect(()=>{
@@ -25,7 +26,7 @@ const Marvel = () => {
                    </div>
                     
                     <div className="card-actions justify-end">
-                       <button className="btn btn-primary bg-purple-700 ">Details</button>
+                    <Link to={`/toy/${marvel._id}`}><button className="btn btn-primary bg-purple-700 ">Details</button></Link>
                     </div>
                 </div>
               </div>

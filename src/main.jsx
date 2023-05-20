@@ -14,6 +14,7 @@ import Main from './Layout/Main';
 import AddNewToy from './components/AddNewToy/AddNewToy';
 import AllToys from './components/AllToys/AllToys';
 import ToyDetails from './components/ToyDetails/ToyDetails';
+import MyToys from './components/MyToys/MyToys';
 
 const router = createBrowserRouter([
   {
@@ -41,9 +42,13 @@ const router = createBrowserRouter([
         element:<AllToys></AllToys>
       },
       {
-        path:'toys/:id',
+        path:'mytoys',
+        element:<MyToys></MyToys>
+      },
+      {
+        path:'toy/:id',
         element:<ToyDetails></ToyDetails>,
-        loader:({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+        loader:({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
       }
     ]
   },
