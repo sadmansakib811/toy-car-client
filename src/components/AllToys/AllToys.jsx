@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const AllToys = () => {
@@ -8,6 +9,8 @@ const AllToys = () => {
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
+
+
   return (
     <div>
       <h1>All Toys</h1>
@@ -51,10 +54,10 @@ const AllToys = () => {
                 </td>
                 <td>{toy.sellername}</td>
                 <td>{toy.category}</td>
-                <td>{toy.price}</td>
+                <td>{toy.price} Tk</td>
                 <td>{toy.quantity}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                <Link to={`/toys/${toy._id}`}> <button className="btn btn-secondary btn-xs">details</button></Link> 
                 </td>
               </tr>
             ))}

@@ -13,6 +13,7 @@ import Home from './components/Home/Home/Home';
 import Main from './Layout/Main';
 import AddNewToy from './components/AddNewToy/AddNewToy';
 import AllToys from './components/AllToys/AllToys';
+import ToyDetails from './components/ToyDetails/ToyDetails';
 
 const router = createBrowserRouter([
   {
@@ -38,15 +39,22 @@ const router = createBrowserRouter([
       {
         path:'alltoys',
         element:<AllToys></AllToys>
+      },
+      {
+        path:'toys/:id',
+        element:<ToyDetails></ToyDetails>,
+        loader:({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
       }
     ]
   },
   
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
+    <React.StrictMode>
     <AuthProvider>
     <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,
+  
 )
