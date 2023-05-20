@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Slider from '../slider/Slider';
 import Category from '../../Category/Category';
 

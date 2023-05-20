@@ -5,7 +5,7 @@ import Marvel from './marvel/Marvel';
 import StarWars from './StarWars/StarWars';
 import Dc from './DC/Dc';
 import Avengers from './Avengers/Avengers';
-import { Link } from 'react-router-dom';
+
 const Category = () => {
   return (
     <div className=' mt-5'>

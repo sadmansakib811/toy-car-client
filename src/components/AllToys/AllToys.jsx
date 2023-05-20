@@ -1,30 +1,41 @@
-import { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
+  const filteredToys = toys.filter((toy) =>
+    toy.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
       <h1>All Toys</h1>
-    
-      {/*============= map=============== */}
-       {/* ============================table================================== */}
-       <div className="overflow-x-auto w-full">
+
+      {/* Search Input */}
+      <div className="text-center mt-10 mb-10 ">
+        <input className="border border-fuchsia-600"
+          type="text"
+          placeholder="Search by toy name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      {/* Table */}
+      <div className="overflow-x-auto w-full">
         <table className="table w-full">
-          {/* head */}
+          {/* Table Head */}
           <thead>
             <tr>
-              <th colSpan="2">
-               
-              </th>
+              <th colSpan="2"></th>
               <th>Toy Name</th>
               <th>Seller</th>
               <th>Sub-Category</th>
@@ -33,18 +44,20 @@ const AllToys = () => {
               <th></th>
             </tr>
           </thead>
+          {/* Table Body */}
           <tbody>
             {/* Render table rows */}
-            {toys.map((toy) => (
+            {filteredToys.map((toy) => (
               <tr key={toy._id}>
-                <td colSpan="2">
-                  
-                </td>
+                <td colSpan="2"></td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={toy.photo} alt="Avatar Tailwind CSS Component" />
+                        <img
+                          src={toy.photo}
+                          alt="Avatar Tailwind CSS Component"
+                        />
                       </div>
                     </div>
                     <div>
@@ -57,14 +70,17 @@ const AllToys = () => {
                 <td>{toy.price} Tk</td>
                 <td>{toy.quantity}</td>
                 <td>
-                <Link to={`/toy/${toy._id}`}> <button className="btn btn-secondary btn-xs">details</button></Link> 
+                  <Link to={`/toy/${toy._id}`}>
+                    <button className="btn btn-secondary btn-xs">
+                      details
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-   
     </div>
   );
 };
