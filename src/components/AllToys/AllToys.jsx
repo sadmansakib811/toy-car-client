@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [limit, setLimit] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/toys")
@@ -15,33 +16,54 @@ const AllToys = () => {
     toy.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const displayedToys = limit ? filteredToys.slice(0, 20) : filteredToys;
+
+  const toggleLimit = () => {
+    setLimit((prevLimit) => !prevLimit);
+  };
+
   return (
     <div className="mt-5">
       <div className="text-center">
-      <h2 className="text-3xl font-extrabold mb-5 MT-10 text-center" style={{ transform: 'rotate(2deg)', padding: '0.2rem 1.2rem', borderRadius: '20% 5% 20% 5%/5% 20% 25% 20%', backgroundColor: '#fdcb6e', fontSize: '1.5rem', display: 'inline-block' }}>ALL TOYS</h2>
-
+        <h2
+          className="text-3xl font-extrabold mb-5 MT-10 text-center"
+          style={{
+            transform: "rotate(2deg)",
+            padding: "0.2rem 1.2rem",
+            borderRadius: "20% 5% 20% 5%/5% 20% 25% 20%",
+            backgroundColor: "#fdcb6e",
+            fontSize: "1.5rem",
+            display: "inline-block",
+          }}
+        >
+          ALL TOYS
+        </h2>
       </div>
 
-
       {/* Search Input */}
-    
       <div className="text-center mt-10 mb-10 ">
-     
-        <input className="border border-fuchsia-600"
+        <input
+          className="border border-fuchsia-600"
           type="text"
           placeholder="Search toy"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        
       </div>
 
+      {/* Limit Button */}
+      <div className="text-center mb-10">
+        <button className="btn btn-primary" onClick={toggleLimit}>
+          {limit ? "Show All" : "Limit to 20"}
+        </button>
+      </div>
+     <h1 className="text-fuchsia-600 text-3xl text-center mb-1">Total Toys: {displayedToys.length}</h1>
       {/* Table */}
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full  ">
         <table className="table w-full">
           {/* Table Head */}
-          <thead>
-            <tr>
+          <thead >
+            <tr >
               <th colSpan="2"></th>
               <th>Toy Name</th>
               <th>Seller</th>
@@ -54,7 +76,7 @@ const AllToys = () => {
           {/* Table Body */}
           <tbody>
             {/* Render table rows */}
-            {filteredToys.map((toy) => (
+            {displayedToys.map((toy) => (
               <tr key={toy._id}>
                 <td colSpan="2"></td>
                 <td>
