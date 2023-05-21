@@ -35,9 +35,9 @@ const SignUp = () => {
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="hero-content flex-col lg:flex-row">
-          <div className="w-1/2 mr-12">{/* <img src={img} alt="" /> */}</div>
+          
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl glass">
-            <div className="card-body">
+            <div className="card-body md:w-96 lg:w-96 sm:w-60">
               <h1 className="text-3xl text-center font-bold">Sign Up</h1>
               <form onSubmit={handleSignUp}>
                 <div className="form-control">
