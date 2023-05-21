@@ -10,9 +10,9 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
-    const createUser = (email, password) => {
+    const createUser = (email, password, photoURL) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password, photoURL);
     }
 
     const signIn = (email, password) => {
@@ -35,22 +35,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             console.log('current user', currentUser);
             setLoading(false);
-            // if(currentUser &&currentUser.email){
-            //     const loggedUser ={
-            //         email: currentUser.email
-            //     }
-            //     fetch('https://car-doctor-server-five-pi.vercel.app/jwt',{
-            //         method:"POST",
-            //         headers:{
-            //             'content-type': 'application/json'
-            //         },
-            //         body: JSON.stringify(loggedUser)
-            //     })
-            //     .then(res=> res.json())
-            //     .then(data => {
-            //         localStorage.setItem('car-access-token', data.token)
-            //     })
-            // }
+            
         });
         return () => {
             return unsubscribe();

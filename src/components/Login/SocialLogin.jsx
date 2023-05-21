@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import { FaGooglePlusG } from "react-icons/fa";
 
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
@@ -14,8 +15,8 @@ const SocialLogin = () => {
         <div>
             <div className="divider">OR</div>
             <div className="text-center">
-                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
-                    G
+                <button  onClick={handleGoogleSignIn} className="btn text-2xl btn-success">
+                  <FaGooglePlusG/>  
                 </button>
             </div>
         </div>

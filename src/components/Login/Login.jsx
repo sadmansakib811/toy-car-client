@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useContext } from 'react';
 import SocialLogin from './SocialLogin';
 import { AuthContext } from '../../providers/AuthProviders';
 
-
+import bg from '../../assets/avengersbg.jpg'
 
 
 const Login = () => {
-
+    
+    
     const { signIn } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
-    // const from = location.state?.from?.pathname || '/';
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -26,22 +27,19 @@ const Login = () => {
             
                 
                 
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
                
                 
             })
             .catch(error => console.log(error));
     }
 
-    return (
-        <div className="hero min-h-screen bg-base-200">
+    return ( 
+        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url(${bg})` }}>
             <div className="hero-content flex-col lg:flex-row">
-                <div className="w-1/2 mr-12">
-                    {/* <img src={} alt="" /> */}
-                    img coming soon
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+               
+                <div className="card flex-shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
+                    <div className="card-body md:w-96 lg:w-96 sm:w-60">
                         <h1 className="text-3xl text-center font-bold">Login</h1>
                         <form onSubmit={handleLogin}>
                             <div className="form-control">
