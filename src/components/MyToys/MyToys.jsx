@@ -10,7 +10,7 @@ const MyToys = () => {
     const [myToys, setMyToys] = useState([]);
     
     
-    const url = `http://localhost:5000/mytoys?selleremail=${user?.email}`;
+    const url = `https://toyland-server-jade.vercel.app/mytoys?selleremail=${user?.email}`;
     useEffect(() => {
              fetch(url)
         
@@ -36,7 +36,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/dlttoys/${id}`,
+        fetch(`https://toyland-server-jade.vercel.app/dlttoys/${id}`,
         {
           method:'DELETE',
           headers: {

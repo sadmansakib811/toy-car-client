@@ -51,12 +51,12 @@ const router = createBrowserRouter([
       {
         path:'toy/:id',
         element:<ToyDetails></ToyDetails>,
-        loader:({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+        loader:({params}) => fetch(`https://toyland-server-jade.vercel.app/toy/${params.id}`)
       },
       {
         path:'updatetoy/:id',
         element:<PrivateRoute> <EditToy></EditToy> </PrivateRoute>,
-        loader:({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+        loader:({params}) => fetch(`https://toyland-server-jade.vercel.app/toy/${params.id}`)
       },
       {
         path:'/blogs',

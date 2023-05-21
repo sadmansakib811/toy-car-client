@@ -34,7 +34,7 @@ const EditToy = () => {
     console.log(updatedToy);
 
     // send data to the server
-    fetch(`http://localhost:5000/toy/${_id}`, {
+    fetch(`https://toyland-server-jade.vercel.app/toy/${_id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'

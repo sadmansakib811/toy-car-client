@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Dc = () => {
     const [dcToys, setDcToys]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/toys/DC')
+        fetch('https://toyland-server-jade.vercel.app/toys/DC')
         .then(res=> res.json())
         .then(data=> setDcToys(data))
     },[])

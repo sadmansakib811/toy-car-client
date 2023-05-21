@@ -29,7 +29,7 @@ const AddNewToy = () => {
       quantity,
     };
     console.log(category)
-    fetch("http://localhost:5000/toys", {
+    fetch("https://toyland-server-jade.vercel.app/toys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

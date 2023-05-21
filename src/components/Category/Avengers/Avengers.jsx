@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Avengers = () => {
     const [dcToys, setDcToys]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/toys/Avengers')
+        fetch('https://toyland-server-jade.vercel.app/toys/Avengers')
         .then(res=> res.json())
         .then(data=> setDcToys(data))
     },[])
