@@ -3,7 +3,7 @@
 [AN ECOMMERCE TOY SELLING WEBSITE]
 
 [Add a screenshot or a GIF showcasing your website]
-
+![Screenshot or GIF](https://i.ibb.co/kqVNXzQ/screencapture-toy-land-30df5-web-app-2023-05-21-14-07-26.png)
 ## Table of Contents
 - [Main Requirements](#main-requirements)
 - [Bonus Requirements](#bonus-requirements)
@@ -74,3 +74,21 @@ In addition to the main requirements, I have also implemented the following bonu
 ## License
 
 - All rights resereved to sadman sakib
+## Demo
+
+Insert gif or link to demo
+
+
+
+
+
+Author: Sadman Sakib
+## Installation
+
+Install my-project with npm
+
+```bash
+ 1. git clone or download,
+ 2. install npm in the project direcotry
+```
+    
