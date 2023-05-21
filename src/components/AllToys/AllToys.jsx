@@ -24,6 +24,7 @@ const AllToys = () => {
 
   return (
     <div className="mt-5">
+      
       <div className="text-center">
         <h2
           className="text-3xl font-extrabold mb-5 MT-10 text-center"
