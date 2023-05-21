@@ -18,11 +18,13 @@ import MyToys from './components/MyToys/MyToys';
 import EditToy from './components/EditToy/EditToy';
 import Blogs from './components/Blogs/Blogs';
 import PrivateRoute from './routes/PrivateRoute';
+import ErrorPage from './error-page';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path: "/",
