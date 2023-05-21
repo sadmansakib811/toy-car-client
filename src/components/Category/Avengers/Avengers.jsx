@@ -1,6 +1,8 @@
 import  { useEffect, useState } from 'react';
 import bg1 from '../../../assets/avengersbg.jpg'
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Avengers = () => {
     const [dcToys, setDcToys]=useState([]);
     useEffect(()=>{
@@ -8,8 +10,16 @@ const Avengers = () => {
         .then(res=> res.json())
         .then(data=> setDcToys(data))
     },[])
+    // Aos animation: 
+    useEffect(() => {
+      AOS.init({
+        duration: 1000, // Duration of animation (in milliseconds)
+        easing: 'ease-in-out', // Type of easing
+        once: true, // Whether animation should trigger only once
+      });
+    }, []);
     return (
-        <div className='flex flex-wrap justify-center mb-5' style={{ backgroundImage: `url(${bg1})` }}>
+        <div data-aos="fade-up" className='flex flex-wrap justify-center mb-5' style={{ backgroundImage: `url(${bg1})` }}>
         {dcToys.map(dc => (
           <div className='flex w-1/3 justify-center' key={dc._id}>
             {/* card */}
