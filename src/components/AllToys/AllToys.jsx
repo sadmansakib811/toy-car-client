@@ -16,17 +16,24 @@ const AllToys = () => {
   );
 
   return (
-    <div>
-      <h1>All Toys</h1>
+    <div className="mt-5">
+      <div className="text-center">
+      <h2 className="text-3xl font-extrabold mb-5 MT-10 text-center" style={{ transform: 'rotate(2deg)', padding: '0.2rem 1.2rem', borderRadius: '20% 5% 20% 5%/5% 20% 25% 20%', backgroundColor: '#fdcb6e', fontSize: '1.5rem', display: 'inline-block' }}>ALL TOYS</h2>
+
+      </div>
+
 
       {/* Search Input */}
+    
       <div className="text-center mt-10 mb-10 ">
+     
         <input className="border border-fuchsia-600"
           type="text"
-          placeholder="Search by toy name"
+          placeholder="Search toy"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        
       </div>
 
       {/* Table */}
