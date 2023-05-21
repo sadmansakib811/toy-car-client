@@ -16,6 +16,7 @@ import AllToys from './components/AllToys/AllToys';
 import ToyDetails from './components/ToyDetails/ToyDetails';
 import MyToys from './components/MyToys/MyToys';
 import EditToy from './components/EditToy/EditToy';
+import Blogs from './components/Blogs/Blogs';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         path:'updatetoy/:id',
         element:<EditToy></EditToy>,
         loader:({params}) => fetch(`http://localhost:5000/toy/${params.id}`)
+      },
+      {
+        path:'/blogs',
+        element:<Blogs></Blogs>
       }
     ]
   },
